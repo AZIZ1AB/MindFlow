@@ -1,36 +1,159 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧠 MindFlow — Early Depression Risk Detection
 
-## Getting Started
+MindFlow is an AI-powered mental health check-in web application that detects early signs of depression through natural conversation and a trained machine learning classifier.
 
-First, run the development server:
+---
+
+## 🎯 Project Overview
+
+MindFlow conducts a gentle 5-question conversation with the user, generates a first-person summary of their mental state, and passes it through a fine-tuned DistilBert binary classifier to predict depression risk level (LOW or MEDIUM). Based on the result, personalized recommendations are provided.
+
+---
+
+## 🏗️ System Architecture
+User → Conversational AI (Groq / Llama 3.3 70B)
+↓
+Conversation Summary (Groq)
+↓
+Binary Classifier (DistilBert) → LOW / MEDIUM
+↓
+Personalized Recommendations
+---
+
+## 🤖 Models Used
+
+| Model | Role | Source |
+|---|---|---|
+| Llama 3.3 70B (Groq) | Conversation + Summary generation | Groq API (free) |
+| DistilBert fine-tuned | Depression risk classification | HuggingFace |
+
+### Classifier
+- **Model:** `amaranceur/mentalhhealthclassifier`
+- **Architecture:** DistilBertForSequenceClassification
+- **Labels:** `LABEL_0` → LOW risk, `LABEL_1` → MEDIUM risk
+- **Input:** First-person summary of conversation (min 5 sentences)
+- **Hosted on:** HuggingFace Space `StryCatt/mindflow-classifier`
+
+---
+
+## 🗂️ Project Structure
+mindflow/
+├── app/
+│   ├── api/
+│   │   ├── chat/
+│   │   │   └── route.ts        # Groq conversation API
+│   │   └── analyze/
+│   │       └── route.ts        # Summary + HF classifier API
+│   ├── globals.css             # Global styles
+│   ├── layout.tsx              # App layout
+│   └── page.tsx                # Landing page + Chat UI
+├── public/                     # Static assets
+├── .gitignore
+├── package.json
+└── README.md
+---
+
+## ⚙️ How It Works
+
+### Step 1 — Conversation
+Groq's Llama 3.3 70B model conducts a 5-question mental health check-in asking about:
+- Mood and emotional state
+- Sleep quality
+- Energy levels
+- Social life
+- Daily routine and concentration
+
+### Step 2 — Summary Generation
+After 5 exchanges, Groq generates a detailed first-person summary (minimum 5 sentences) covering all aspects of the user's mental state.
+
+### Step 3 — Classification
+The summary is sent to the fine-tuned DistilBert classifier hosted on HuggingFace Spaces. It returns:
+- `LOW` — Preventive guidance recommended
+- `MEDIUM` — Active support recommended
+
+### Step 4 — Recommendations
+Based on the risk level, the app displays personalized recommendations from 4 categories:
+- 🟢 **Relaxation & Mindfulness** — Breathing, meditation, yoga
+- 🟡 **Lifestyle Balance** — Sleep hygiene, physical activity
+- 🔵 **Social Connection** — Reaching out to friends and family
+- 🟣 **Professional Support** — Therapists, counselors, crisis helplines
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | Next.js 15, TypeScript, CSS |
+| Backend | Next.js API Routes |
+| Conversation AI | Groq API (Llama 3.3 70B) |
+| Classifier | HuggingFace Inference (DistilBert) |
+| Deployment | Vercel |
+| Model Hosting | HuggingFace Spaces (Gradio) |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js v18+
+- Groq API key (free at console.groq.com)
+- HuggingFace token (free at huggingface.co)
+
+### Installation
+
+```bash
+git clone https://github.com/AZIZ1AB/MindFlow.git
+cd mindflow
+npm install
+```
+
+### Environment Variables
+
+Create a `.env.local` file in the root directory:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+HF_TOKEN=your_huggingface_token
+HF_MODEL=amaranceur/mentalhhealthclassifier
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
+
+### Run Locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔗 Links
 
-## Learn More
+- **Live App:** https://mindflow.vercel.app
+- **Classifier Model:** https://huggingface.co/amaranceur/mentalhhealthclassifier
+- **HuggingFace Space:** https://huggingface.co/spaces/StryCatt/mindflow-classifier
+- **GitHub:** https://github.com/AZIZ1AB/MindFlow
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 👥 Team
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Name | GitHub | Role |
+|---|---|---|
+| Member 1 | AZIZ1AB | Frontend + Integration |
+| Member 2 | amaranceur | Model Training |
+| Member 3 | StryCatt | HuggingFace Space |
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ⚠️ Disclaimer
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MindFlow is an academic project and is **not a substitute for professional mental health care**. If you or someone you know is in crisis, please contact a mental health professional or crisis helpline immediately.
+
+---
+
+## 📄 License
+
+MIT License — Academic use only
