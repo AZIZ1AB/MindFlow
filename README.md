@@ -36,7 +36,6 @@ Personalized Recommendations
 
 ---
 
-## 🗂️ Project Structure
 ## 📁 Project Structure
 
 ```text
