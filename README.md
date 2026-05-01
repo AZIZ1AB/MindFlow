@@ -135,7 +135,7 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ## 🔗 Links
 
-- **Live App:** 
+- **Live App:** https://mind-flow-nine-beta.vercel.app
 - **Classifier Model:** https://huggingface.co/amaranceur/mentalhhealthclassifier
 - **HuggingFace Space:** https://huggingface.co/spaces/StryCatt/mindflow-classifier
 
@@ -145,9 +145,9 @@ Open [http://localhost:3000](http://localhost:3000)
 
 | Name | GitHub | Role |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Abadi abdelaaziz | AZIZ1AB | Business & Strategy Lead |
+| Anceur hadj amar | amaranceur | Project Manager |
+| Djelali mohamed aymen |  | Technical Lead / AI Developer |
 
 ---
 
