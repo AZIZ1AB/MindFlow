@@ -37,6 +37,9 @@ Personalized Recommendations
 ---
 
 ## 🗂️ Project Structure
+## 📁 Project Structure
+
+```text
 mindflow/
 ├── app/
 │   ├── api/
@@ -44,13 +47,15 @@ mindflow/
 │   │   │   └── route.ts        # Groq conversation API
 │   │   └── analyze/
 │   │       └── route.ts        # Summary + HF classifier API
-│   ├── globals.css             # Global styles
-│   ├── layout.tsx              # App layout
-│   └── page.tsx                # Landing page + Chat UI
-├── public/                     # Static assets
+│   ├── globals.css            # Global styles
+│   ├── layout.tsx             # App layout
+│   └── page.tsx               # Landing page + Chat UI
+├── public/                    # Static assets
 ├── .gitignore
 ├── package.json
 └── README.md
+```
+
 ---
 
 ## ⚙️ How It Works
@@ -131,10 +136,9 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ## 🔗 Links
 
-- **Live App:** https://mindflow.vercel.app
+- **Live App:** 
 - **Classifier Model:** https://huggingface.co/amaranceur/mentalhhealthclassifier
 - **HuggingFace Space:** https://huggingface.co/spaces/StryCatt/mindflow-classifier
-- **GitHub:** https://github.com/AZIZ1AB/MindFlow
 
 ---
 
@@ -142,9 +146,9 @@ Open [http://localhost:3000](http://localhost:3000)
 
 | Name | GitHub | Role |
 |---|---|---|
-| Member 1 | AZIZ1AB | Frontend + Integration |
-| Member 2 | amaranceur | Model Training |
-| Member 3 | StryCatt | HuggingFace Space |
+|  |  |  |
+|  |  |  |
+|  |  |  |
 
 ---
 
