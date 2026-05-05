@@ -148,6 +148,7 @@ Open [http://localhost:3000](http://localhost:3000)
 | Abadi abdelaaziz | AZIZ1AB | Business & Strategy Lead |
 | Anceur hadj amar | amaranceur | Project Manager |
 | Djelali mohamed aymen |  | Technical Lead / AI Developer |
+| Dr. Abderrahmane Khiat |  | Supervisor/Mentor |
 
 ---
 
